@@ -37,4 +37,23 @@ gem 'spring',        group: :development
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+gem 'byebug', '~> 3.5.1', group: [:development, :test]
+
+#gem 'devise',              github: 'plataformatec/devise'
+gem 'devise', '~> 3.4.1'
+gem 'cancancan', '~> 1.9.2'
+gem 'haml-rails', '~> 0.5.3'
+gem 'simple_form', '~> 3.0.2'
+gem 'redcarpet', '~> 3.1.2'
+gem 'foundation-rails', '~> 5.4.5.0'
+gem 'foundation-icons-sass-rails', '~> 3.0.0'
+gem "therubyracer", "~> 0.12.1"
+gem 'thin', "~> 1.6.3"
+gem 'cocoon', "1.2.6"
+gem 'prawn', '1.3.0'
+gem 'prawn-table', '0.2.1'
+gem "friendly_id", "~> 5.0.4"
+
+gem 'quiet_assets', group: [:development, :test]
+gem 'rails_12factor', group: :production
 

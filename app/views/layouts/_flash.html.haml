@@ -1,0 +1,20 @@
+- if flash[:error]
+  .row
+    .small-12.columns
+      .alert-box.warning.radius{"data-alert" => ""}
+        = h flash[:error].html_safe
+- if flash[:notice]
+  .row
+    .small-12.columns
+      .alert-box.info.radius{"data-alert" => ""}
+        = h flash[:notice].html_safe
+- if flash[:success]
+  .row
+    .small-12.columns
+      .alert-box.success.radius{"data-alert" => ""}
+        = h flash[:success].html_safe
+- if flash[:alert]
+  .row
+    .small-12.columns
+      .alert-box.warning.radius{"data-alert" => ""}
+        = h flash[:alert].html_safe
