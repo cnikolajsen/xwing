@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Ship type:
+  = @ship.ship_type
+%p
+  %b Primary weapon value:
+  = @ship.primary_weapon
+%p
+  %b Agility:
+  = @ship.agility
+%p
+  %b Hull:
+  = @ship.hull
+%p
+  %b Shield:
+  = @ship.shield
+%p
+  %b Description:
+  = @ship.description
+
+= link_to 'Edit', edit_ship_path(@ship)
+\|
+= link_to 'Back', ships_path

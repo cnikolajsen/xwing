@@ -56,4 +56,3 @@ gem "friendly_id", "~> 5.0.4"
 
 gem 'quiet_assets', group: [:development, :test]
 gem 'rails_12factor', group: :production
-

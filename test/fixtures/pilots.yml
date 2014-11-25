@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  skill: 1
+  description: MyText
+  card_text: MyText
+  slug: MyString
+
+two:
+  name: MyString
+  skill: 1
+  description: MyText
+  card_text: MyText
+  slug: MyString

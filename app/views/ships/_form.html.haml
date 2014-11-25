@@ -1,0 +1,28 @@
+= form_for @ship do |f|
+  - if @ship.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@ship.errors.count, "error")} prohibited this ship from being saved:"
+      %ul
+        - @ship.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :ship_type
+    = f.text_field :ship_type
+  .field
+    = f.label :primary_weapon
+    = f.number_field :primary_weapon
+  .field
+    = f.label :agility
+    = f.number_field :agility
+  .field
+    = f.label :hull
+    = f.number_field :hull
+  .field
+    = f.label :shield
+    = f.number_field :shield
+  .field
+    = f.label :description
+    = f.text_area :description
+  .actions
+    = f.submit 'Save'

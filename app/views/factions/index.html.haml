@@ -1,0 +1,26 @@
+- content_for :title do
+  Factions
+
+.row
+  .small-12.columns
+    %h1
+      Factions
+      - if can? :create, @faction
+        %small
+          = link_to "<i class='fi-plus' title='New faction'></i>".html_safe, new_faction_path
+
+.row
+  .small-12.columns
+    %table.responsive
+      %tr
+        %th Faction
+        %th
+        %th
+        %th
+
+      - @factions.each do |faction|
+        %tr
+          %td= faction.name
+          %td= link_to 'Show', faction
+          %td= link_to 'Edit', edit_faction_path(faction)
+          %td= link_to 'Destroy', faction, :method => :delete, :data => { :confirm => 'Are you sure?' }

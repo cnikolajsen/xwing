@@ -1,0 +1,32 @@
+- content_for :title do
+  Pilots
+
+.row
+  .small-12.columns
+    %h1
+      Pilots
+      - if can? :create, @pilot
+        %small
+          = link_to "<i class='fi-plus' title='New pilot'></i>".html_safe, new_pilot_path
+
+.row
+  .small-12.columns
+    %table.responsive
+      %tr
+        %th Pilot
+        %th Skill
+        %th Description
+        %th Card Text
+        %th
+        %th
+        %th
+
+      - @pilots.each do |pilot|
+        %tr
+          %td= pilot.name
+          %td= pilot.skill
+          %td= pilot.description
+          %td= pilot.card_text
+          %td= link_to 'Show', pilot
+          %td= link_to 'Edit', edit_pilot_path(pilot)
+          %td= link_to 'Destroy', pilot, :method => :delete, :data => { :confirm => 'Are you sure?' }

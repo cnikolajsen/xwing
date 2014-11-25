@@ -3,7 +3,7 @@
   %head
     %meta{:charset => "utf-8"}/
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
-    %title= content_for?(:title) ? yield(:title) : "foundation-rails"
+    %title= content_for?(:title) ? yield(:title) : "Imperial Security Bureau"
     = stylesheet_link_tag    "application"
     = javascript_include_tag "vendor/modernizr"
     = csrf_meta_tags
@@ -28,7 +28,9 @@
                         %li{:class => ("active" if current_page('sidebars'))}
                           /#{link_to "Sidebars", sidebars_path}
                         %li{:class => ("active" if current_page('expansions'))}
-                          /#{link_to "Expansions", expansions_path}
+                          #{link_to "Expansions", expansions_path}
+                        %li{:class => ("active" if current_page('factions'))}
+                          #{link_to "Factions", factions_path}
                     /- if can? :manage, Character
                     /  %li.has-dropdown{:class => ("active" if ['characters', 'new_character'].include?(@page))}
                     /    %a{href: "#"} Characters
@@ -50,8 +52,10 @@
               / Left Nav Section
               %ul.left
                 - if can? :read, :all
-                  %li{:class => ("active" if current_page('races'))}
-                    /#{link_to "Species", races_path}
+                  %li{:class => ("active" if current_page('ships'))}
+                    #{link_to "Ships", ships_path}
+                  %li{:class => ("active" if current_page('pilots'))}
+                    #{link_to "Pilots", pilots_path}
                   /%li.has-dropdown{:class => ("active" if ['careers'].include?(@top_page))}
                   /  #{link_to "Careers", careers_path}
                   /  %ul.dropdown

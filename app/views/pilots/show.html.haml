@@ -1,0 +1,28 @@
+- content_for :title do
+  = @pilot.name
+
+.row
+  .small-12.columns
+    %h1= @pilot.name
+    %p
+      %b Name:
+      = @pilot.name
+    %p
+      %b Skill:
+      = @pilot.skill
+    %p
+      %b Description:
+      = @pilot.description
+    %p
+      %b Card text:
+      = @pilot.card_text
+
+.row
+  .small-12.columns
+    .button-bar
+      %ul.button-group.round
+        %li= link_to "<i class='fi-arrow-left'> Back</i>".html_safe, |
+            pilots_path, :class => 'tiny secondary button'         |
+        - if can? :manage, @pilot
+          %li= link_to "<i class='fi-pencil'> Edit</i>".html_safe, edit_pilot_path(@pilot), :class => 'tiny success button'
+          %li= link_to "<i class='fi-trash'> Destroy</i>".html_safe, @pilot, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'tiny alert button'

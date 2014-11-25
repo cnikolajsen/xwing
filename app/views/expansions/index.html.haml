@@ -1,0 +1,23 @@
+%h1 Listing expansions
+
+%table
+  %tr
+    %th Title
+    %th Description
+    %th Slug
+    %th
+    %th
+    %th
+
+  - @expansions.each do |expansion|
+    %tr
+      %td= expansion.title
+      %td= expansion.description
+      %td= expansion.slug
+      %td= link_to 'Show', expansion
+      %td= link_to 'Edit', edit_expansion_path(expansion)
+      %td= link_to 'Destroy', expansion, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Expansion', new_expansion_path

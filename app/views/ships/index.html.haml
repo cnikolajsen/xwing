@@ -1,0 +1,37 @@
+- content_for :title do
+  Listing ships
+
+.row
+  .small-12.columns
+    %h1
+      Listing ships
+      - if can? :create, @ship
+        %small
+          = link_to "<i class='fi-plus' title='New ship'></i>".html_safe, new_ship_path
+
+.row
+  .small-12.columns
+    %table.responsive
+      %tr
+        %th Ship type
+        %th Faction
+        %th Primary weapon
+        %th Agility
+        %th Hull
+        %th Shield
+        %th Description
+        %th
+        %th
+        %th
+
+      - @ships.each do |ship|
+        %tr
+          %td= ship.ship_type
+          %td= ship.primary_weapon
+          %td= ship.agility
+          %td= ship.hull
+          %td= ship.shield
+          %td= ship.description
+          %td= link_to 'Show', ship
+          %td= link_to 'Edit', edit_ship_path(ship)
+          %td= link_to 'Destroy', ship, :method => :delete, :data => { :confirm => 'Are you sure?' }

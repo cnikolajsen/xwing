@@ -11,10 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141110221937) do
+ActiveRecord::Schema.define(version: 20141124142922) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "expansions", force: true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.string   "slug"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "expansions", ["slug"], name: "index_expansions_on_slug", unique: true, using: :btree
+
+  create_table "factions", force: true do |t|
+    t.string   "name"
+    t.string   "slug"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "factions", ["slug"], name: "index_factions_on_slug", unique: true, using: :btree
 
   create_table "friendly_id_slugs", force: true do |t|
     t.string   "slug",                      null: false
@@ -28,6 +47,32 @@ ActiveRecord::Schema.define(version: 20141110221937) do
   add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
+
+  create_table "pilots", force: true do |t|
+    t.string   "name"
+    t.integer  "skill"
+    t.text     "description"
+    t.text     "card_text"
+    t.string   "slug"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "pilots", ["slug"], name: "index_pilots_on_slug", unique: true, using: :btree
+
+  create_table "ships", force: true do |t|
+    t.string   "ship_type"
+    t.integer  "primary_weapon"
+    t.integer  "agility"
+    t.integer  "hull"
+    t.integer  "shield"
+    t.text     "description"
+    t.string   "slug"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "ships", ["slug"], name: "index_ships_on_slug", unique: true, using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

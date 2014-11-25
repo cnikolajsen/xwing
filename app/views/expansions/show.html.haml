@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @expansion.title
+%p
+  %b Description:
+  = @expansion.description
+%p
+  %b Slug:
+  = @expansion.slug
+
+= link_to 'Edit', edit_expansion_path(@expansion)
+\|
+= link_to 'Back', expansions_path

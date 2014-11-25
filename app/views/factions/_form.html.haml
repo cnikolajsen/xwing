@@ -1,0 +1,25 @@
+= simple_form_for @faction, html: { class: 'form-horizontal' } do |f|
+  = hidden_field_tag 'character_basics', 'true'
+  - if @faction.errors.any?
+    .alert-box.warning.radius{"data-alert" => ""}
+      %p
+        = pluralize(@faction.errors.count, "error")
+        prohibited this faction from being saved:
+      %ul
+        - @faction.errors.full_messages.each do |msg|
+          %li= msg
+
+  .row
+    .medium-6.small-12.columns
+      .row
+        .small-3.columns
+          = f.label :name, :class => 'inline left'
+        .small-9.columns
+          = f.input :name, :placeholder => 'Faction name', label: false
+
+  .row
+    %p
+    .small-12.columns
+      .form-actions
+        = f.submit nil, :class => 'button'
+        = link_to t('.cancel', :default => t("helpers.links.cancel")), factions_path, :class => 'button secondary'

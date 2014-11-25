@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  pilot_name: MyString
+  pilot_skill: 1
+  ship_type: MyString
+  faction: MyString
+  primary_weapon_value: 1
+  agility: 1
+  hull: 1
+  shield: 1
+  description: MyText
+  cost: 1
+  slug: MyString
+
+two:
+  pilot_name: MyString
+  pilot_skill: 1
+  ship_type: MyString
+  faction: MyString
+  primary_weapon_value: 1
+  agility: 1
+  hull: 1
+  shield: 1
+  description: MyText
+  cost: 1
+  slug: MyString
