@@ -38,7 +38,7 @@ class ExpansionsController < ApplicationController
 
   private
     def set_expansion
-      @expansion = Expansion.find(params[:id])
+      @expansion = Expansion.friendly.find(params[:id])
     end
 
     def expansion_params

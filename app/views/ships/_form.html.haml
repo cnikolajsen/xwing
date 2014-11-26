@@ -1,28 +1,51 @@
-= form_for @ship do |f|
+= simple_form_for @ship, html: { class: 'form-horizontal' } do |f|
+  = hidden_field_tag 'character_basics', 'true'
   - if @ship.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@ship.errors.count, "error")} prohibited this ship from being saved:"
+    .alert-box.warning.radius{"data-alert" => ""}
+      %p
+        = pluralize(@ship.errors.count, "error")
+        prohibited this ship from being saved:
       %ul
         - @ship.errors.full_messages.each do |msg|
           %li= msg
 
-  .field
-    = f.label :ship_type
-    = f.text_field :ship_type
-  .field
-    = f.label :primary_weapon
-    = f.number_field :primary_weapon
-  .field
-    = f.label :agility
-    = f.number_field :agility
-  .field
-    = f.label :hull
-    = f.number_field :hull
-  .field
-    = f.label :shield
-    = f.number_field :shield
-  .field
-    = f.label :description
-    = f.text_area :description
-  .actions
-    = f.submit 'Save'
+  .row
+    .medium-6.small-12.columns
+      .row
+        .small-3.columns
+          = f.label :ship_type, :class => 'inline left'
+        .small-9.columns
+          = f.input :ship_type, :placeholder => 'Ship type', label: false
+      .row
+        .small-3.columns
+          = f.label :primary_weapon, :class => 'inline left'
+        .small-9.columns
+          = f.input :primary_weapon, :placeholder => '', label: false
+      .row
+        .small-3.columns
+          = f.label :agility, :class => 'inline left'
+        .small-9.columns
+          = f.input :agility, :placeholder => '', label: false
+      .row
+        .small-3.columns
+          = f.label :hull, :class => 'inline left'
+        .small-9.columns
+          = f.input :hull, :placeholder => '', label: false
+      .row
+        .small-3.columns
+          = f.label :shield, :class => 'inline left'
+        .small-9.columns
+          = f.input :shield, :placeholder => '', label: false
+      .row
+        .small-3.columns
+          = f.label :description, :class => 'inline left'
+        .small-9.columns
+          = f.input :description, :placeholder => '', label: false, as: :text, :input_html => { :rows => 10 }
+      .row
+        .small-12.columns
+          .form-actions
+            = f.submit nil, :class => 'button'
+            = link_to t('.cancel', :default => t("helpers.links.cancel")), ships_path, :class => 'button secondary'
+
+    .medium-6.small-12.columns
+      = find_and_preserve render :partial => 'layouts/markdown'

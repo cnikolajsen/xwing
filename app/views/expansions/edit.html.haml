@@ -1,7 +1,10 @@
-%h1 Editing expansion
+- content_for :title do
+  Edit expansion
 
-= render 'form'
-
-= link_to 'Show', @expansion
-\|
-= link_to 'Back', expansions_path
+.row
+  .small-12.columns
+    %h1
+      = "Edit expansion: #{@expansion.title}"
+.row
+  .small-12.columns
+    = render :partial => 'form'

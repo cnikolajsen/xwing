@@ -1,19 +1,31 @@
-= form_for @expansion do |f|
+= simple_form_for @expansion, html: { class: 'form-horizontal' } do |f|
+  = hidden_field_tag 'character_basics', 'true'
   - if @expansion.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@expansion.errors.count, "error")} prohibited this expansion from being saved:"
+    .alert-box.warning.radius{"data-alert" => ""}
+      %p
+        = pluralize(@expansion.errors.count, "error")
+        prohibited this expansion from being saved:
       %ul
         - @expansion.errors.full_messages.each do |msg|
           %li= msg
 
-  .field
-    = f.label :title
-    = f.text_field :title
-  .field
-    = f.label :description
-    = f.text_area :description
-  .field
-    = f.label :slug
-    = f.text_field :slug
-  .actions
-    = f.submit 'Save'
+  .row
+    .medium-6.small-12.columns
+      .row
+        .small-3.columns
+          = f.label :title, :class => 'inline left'
+        .small-9.columns
+          = f.input :title, :placeholder => 'Expansion name', label: false
+      .row
+        .small-3.columns
+          = f.label :description, :class => 'inline left'
+        .small-9.columns
+          = f.input :description, :placeholder => 'Expansion description', label: false, as: :text, :input_html => { :rows => 10 }
+      .row
+        .small-12.columns
+          .form-actions
+            = f.submit nil, :class => 'button'
+            = link_to t('.cancel', :default => t("helpers.links.cancel")), expansions_path, :class => 'button secondary'
+
+    .medium-6.small-12.columns
+      = find_and_preserve render :partial => 'layouts/markdown'

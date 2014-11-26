@@ -1,23 +1,28 @@
-%h1 Listing expansions
+- content_for :title do
+  Expansions
 
-%table
-  %tr
-    %th Title
-    %th Description
-    %th Slug
-    %th
-    %th
-    %th
+.row
+  .small-12.columns
+    %h1
+      Expansions
+      - if can? :create, @expansion
+        %small
+          = link_to "<i class='fi-plus' title='New expansion'></i>".html_safe, new_expansion_path
 
-  - @expansions.each do |expansion|
-    %tr
-      %td= expansion.title
-      %td= expansion.description
-      %td= expansion.slug
-      %td= link_to 'Show', expansion
-      %td= link_to 'Edit', edit_expansion_path(expansion)
-      %td= link_to 'Destroy', expansion, :method => :delete, :data => { :confirm => 'Are you sure?' }
+.row
+  .small-12.columns
+    %table.responsive
+      %tr
+        %th Title
+        %th Description
+        %th
+        %th
+        %th
 
-%br
-
-= link_to 'New Expansion', new_expansion_path
+      - @expansions.each do |expansion|
+        %tr
+          %td= expansion.title
+          %td= expansion.description
+          %td= link_to 'Show', expansion
+          %td= link_to 'Edit', edit_expansion_path(expansion)
+          %td= link_to 'Destroy', expansion, :method => :delete, :data => { :confirm => 'Are you sure?' }
