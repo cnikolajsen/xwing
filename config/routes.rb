@@ -15,12 +15,11 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   devise_scope :user do
-    get "login", :to => "devise/sessions#new"
-    get "logout", :to => "devise/sessions#destroy"
-    get "register", :to => "devise/registrations#new"
-    get "me", :to => "devise/registrations#edit"
+    get 'login', to: 'devise/sessions#new'
+    get 'logout', to: 'devise/sessions#destroy'
+    get 'register', to: 'devise/registrations#new'
+    get 'me', to: 'devise/registrations#edit'
   end
-
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

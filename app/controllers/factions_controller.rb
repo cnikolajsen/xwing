@@ -42,6 +42,8 @@ class FactionsController < ApplicationController
     end
 
     def faction_params
-      params.require(:faction).permit(:name, :slug)
+      params.require(:faction).permit(:name, :slug,
+        faction_ships_attributes: [ :id, :faction_id, :ship_id, :_destroy ],
+        faction_pilots_attributes: [ :id, :faction_id, :pilot_id, :_destroy ])
     end
 end

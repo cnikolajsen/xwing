@@ -42,6 +42,7 @@ class ShipsController < ApplicationController
     end
 
     def ship_params
-      params.require(:ship).permit(:ship_type, :primary_weapon, :agility, :hull, :shield, :description, :slug)
+      params.require(:ship).permit(:ship_type, :primary_weapon, :agility, :hull, :shield, :description, :slug,
+        faction_ships_attributes: [ :id, :faction_id, :ship_id, :_destroy ])
     end
 end

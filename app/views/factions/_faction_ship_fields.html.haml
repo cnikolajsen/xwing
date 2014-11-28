@@ -1,0 +1,9 @@
+.fields
+  .row
+    .small-3.columns
+      = f.label :ship_id, :class => 'inline right'
+    .small-4.columns
+      = f.input :ship_id, :as => :select, :collection => Ship.where(:true).map{|ship| ["#{ship.ship_type}", ship.id]}, label: false
+    .small-1.columns
+      = f.hidden_field :_destroy
+      = link_to "<i class='fi-trash'></i>".html_safe, '', :onclick => "remove_fields(this);return false;"

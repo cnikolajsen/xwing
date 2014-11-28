@@ -43,6 +43,13 @@
           = f.input :description, :placeholder => '', label: false, as: :text, :input_html => { :rows => 10 }
       .row
         .small-12.columns
+          %h4.subheader Faction
+          = f.simple_fields_for :faction_ships do |builder|
+            = render 'faction_ship_fields', :f => builder
+          = link_to_add_fields "<i class='fi-plus'> Add Faction</i>".html_safe, f, :faction_ships
+
+      .row
+        .small-12.columns
           .form-actions
             = f.submit nil, :class => 'button'
             = link_to t('.cancel', :default => t("helpers.links.cancel")), ships_path, :class => 'button secondary'

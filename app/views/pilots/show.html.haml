@@ -12,6 +12,9 @@
     %p
       %b Card text:
       = @pilot.card_text
+    %p
+      %b Faction:
+      = @pilot.faction_names.to_sentence.html_safe
 
 .row
   .small-12.columns

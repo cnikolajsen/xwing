@@ -42,6 +42,7 @@ class PilotsController < ApplicationController
     end
 
     def pilot_params
-      params.require(:pilot).permit(:name, :skill, :description, :card_text, :slug)
+      params.require(:pilot).permit(:name, :skill, :description, :card_text, :slug,
+        faction_pilots_attributes: [ :id, :faction_id, :pilot_id, :_destroy ])
     end
 end
