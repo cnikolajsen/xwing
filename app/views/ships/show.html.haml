@@ -1,9 +1,11 @@
 - content_for :title do
-  = @ship.ship_type
+  = "#{@ship.ship} - #{@ship.pilot_name}"
 
 .row
   .small-12.columns
-    %h1= @ship.ship_type
+    %h1
+      = "#{@ship.ship} - #{@ship.pilot_name}"
+      %small= @ship.faction.name
 
     %p
       = @ship.description

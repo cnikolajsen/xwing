@@ -18,7 +18,7 @@ class ShipsControllerTest < ActionController::TestCase
 
   test "should create ship" do
     assert_difference('Ship.count') do
-      post :create, ship: { agility: @ship.agility, cost: @ship.cost, description: @ship.description, faction: @ship.faction, hull: @ship.hull, pilot_name: @ship.pilot_name, pilot_skill: @ship.pilot_skill, primary_weapon_value: @ship.primary_weapon_value, shield: @ship.shield, ship_type: @ship.ship_type, slug: @ship.slug }
+      post :create, ship: { agility: @ship.agility, cost: @ship.cost, description: @ship.description, faction: @ship.faction, hull: @ship.hull, pilot_name: @ship.pilot_name, pilot_skill: @ship.pilot_skill, primary_weapon_value: @ship.primary_weapon_value, shield: @ship.shield, ship: @ship.ship, slug: @ship.slug }
     end
 
     assert_redirected_to ship_path(assigns(:ship))
@@ -35,7 +35,7 @@ class ShipsControllerTest < ActionController::TestCase
   end
 
   test "should update ship" do
-    patch :update, id: @ship, ship: { agility: @ship.agility, cost: @ship.cost, description: @ship.description, faction: @ship.faction, hull: @ship.hull, pilot_name: @ship.pilot_name, pilot_skill: @ship.pilot_skill, primary_weapon_value: @ship.primary_weapon_value, shield: @ship.shield, ship_type: @ship.ship_type, slug: @ship.slug }
+    patch :update, id: @ship, ship: { agility: @ship.agility, cost: @ship.cost, description: @ship.description, faction: @ship.faction, hull: @ship.hull, pilot_name: @ship.pilot_name, pilot_skill: @ship.pilot_skill, primary_weapon_value: @ship.primary_weapon_value, shield: @ship.shield, ship: @ship.ship, slug: @ship.slug }
     assert_redirected_to ship_path(assigns(:ship))
   end
 

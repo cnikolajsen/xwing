@@ -1,9 +1,0 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  faction_id: 1
-  pilot_id: 1
-
-two:
-  faction_id: 1
-  pilot_id: 1

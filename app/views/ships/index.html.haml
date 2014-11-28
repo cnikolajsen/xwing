@@ -13,25 +13,28 @@
   .small-12.columns
     %table.responsive
       %tr
+        %th Pilot
         %th Ship type
         %th Faction
+        %th Skill
         %th Primary weapon
         %th Agility
         %th Hull
         %th Shield
-        %th Description
         %th
         %th
         %th
 
       - @ships.each do |ship|
         %tr
-          %td= ship.ship_type
+          %td= ship.pilot_name
+          %td= ship.ship
+          %td= ship.faction.name
+          %td= ship.pilot_skill
           %td= ship.primary_weapon
           %td= ship.agility
           %td= ship.hull
           %td= ship.shield
-          %td= ship.description
           %td= link_to 'Show', ship
           %td= link_to 'Edit', edit_ship_path(ship)
           %td= link_to 'Destroy', ship, :method => :delete, :data => { :confirm => 'Are you sure?' }

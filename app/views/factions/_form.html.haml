@@ -16,19 +16,12 @@
           = f.label :name, :class => 'inline left'
         .small-9.columns
           = f.input :name, :placeholder => 'Faction name', label: false
-      .row
-        .small-12.columns
-          %h4.subheader Ships
-          = f.simple_fields_for :faction_ships do |builder|
-            = render 'faction_ship_fields', :f => builder
-          = link_to_add_fields "<i class='fi-plus'> Add Ship</i>".html_safe, f, :faction_ships
-      .row
-        .small-12.columns
-          %h4.subheader Pilots
-          = f.simple_fields_for :faction_pilots do |builder|
-            = render 'faction_pilot_fields', :f => builder
-          = link_to_add_fields "<i class='fi-plus'> Add Pilot</i>".html_safe, f, :faction_pilots
-
+      /.row
+      /  .small-12.columns
+      /    %h4.subheader Ships
+      /    = f.simple_fields_for :faction_ships do |builder|
+      /      = render 'faction_ship_fields', :f => builder
+      /    = link_to_add_fields "<i class='fi-plus'> Add Ship</i>".html_safe, f, :faction_ships
 
   .row
     %p

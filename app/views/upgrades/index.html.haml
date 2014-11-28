@@ -1,0 +1,31 @@
+%h1 Listing upgrades
+
+%table
+  %tr
+    %th Name
+    %th Ability
+    %th Attack value
+    %th Weapon range
+    %th Category
+    %th Cost
+    %th Slug
+    %th
+    %th
+    %th
+
+  - @upgrades.each do |upgrade|
+    %tr
+      %td= upgrade.name
+      %td= upgrade.ability
+      %td= upgrade.attack_value
+      %td= upgrade.weapon_range
+      %td= upgrade.category
+      %td= upgrade.cost
+      %td= upgrade.slug
+      %td= link_to 'Show', upgrade
+      %td= link_to 'Edit', edit_upgrade_path(upgrade)
+      %td= link_to 'Destroy', upgrade, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Upgrade', new_upgrade_path

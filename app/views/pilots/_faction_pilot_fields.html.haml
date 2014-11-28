@@ -1,9 +1,0 @@
-.fields
-  .row
-    .small-3.columns
-      = f.label :faction_id, :class => 'inline right'
-    .small-4.columns
-      = f.input :faction_id, :as => :select, :collection => Faction.where(true), label: false
-    .small-1.columns
-      = f.hidden_field :_destroy
-      = link_to "<i class='fi-trash'></i>".html_safe, '', :onclick => "remove_fields(this);return false;"

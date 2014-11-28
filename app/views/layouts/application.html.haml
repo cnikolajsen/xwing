@@ -54,8 +54,8 @@
                 - if can? :read, :all
                   %li{:class => ("active" if current_page('ships'))}
                     #{link_to "Ships", ships_path}
-                  %li{:class => ("active" if current_page('pilots'))}
-                    #{link_to "Pilots", pilots_path}
+                  %li{:class => ("active" if current_page('upgrades'))}
+                    #{link_to "Upgrades", upgrades_path}
                   /%li.has-dropdown{:class => ("active" if ['careers'].include?(@top_page))}
                   /  #{link_to "Careers", careers_path}
                   /  %ul.dropdown

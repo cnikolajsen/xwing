@@ -1,0 +1,27 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @upgrade.name
+%p
+  %b Ability:
+  = @upgrade.ability
+%p
+  %b Attack value:
+  = @upgrade.attack_value
+%p
+  %b Weapon range:
+  = @upgrade.weapon_range
+%p
+  %b Category:
+  = @upgrade.category
+%p
+  %b Cost:
+  = @upgrade.cost
+%p
+  %b Slug:
+  = @upgrade.slug
+
+= link_to 'Edit', edit_upgrade_path(@upgrade)
+\|
+= link_to 'Back', upgrades_path

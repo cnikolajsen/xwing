@@ -13,9 +13,39 @@
     .medium-6.small-12.columns
       .row
         .small-3.columns
-          = f.label :ship_type, :class => 'inline left'
+          = f.label :pilot_name, :class => 'inline left'
         .small-9.columns
-          = f.input :ship_type, :placeholder => 'Ship type', label: false
+          = f.input :pilot_name, :placeholder => 'Pilot name', label: false
+      .row
+        .small-3.columns
+          = f.label :ship, :class => 'inline left'
+        .small-9.columns
+          = f.input :ship, :placeholder => 'Ship type', label: false
+      .row
+        .small-3.columns
+          = f.label :faction_id, :class => 'inline left'
+        .small-9.columns
+          = f.input :faction_id, label: false, as: :select, collection: Faction.where(true)
+      .row
+        .small-3.columns
+          = f.label :pilot_skill, :class => 'inline left'
+        .small-9.columns
+          = f.input :pilot_skill, :placeholder => 'Pilot skill', label: false
+      .row
+        .small-3.columns
+          = f.label :image_url, :class => 'inline left'
+        .small-9.columns
+          = f.input :image_url, :placeholder => 'External image URL', label: false
+      .row
+        .small-3.columns
+          = f.label :description, :class => 'inline left'
+        .small-9.columns
+          = f.input :description, :placeholder => 'Pilot description', label: false, as: :text, :input_html => { :rows => 10 }
+      .row
+        .small-3.columns
+          = f.label :card_text, :class => 'inline left'
+        .small-9.columns
+          = f.input :card_text, :placeholder => 'Pilot card text', label: false, as: :text, :input_html => { :rows => 10 }
       .row
         .small-3.columns
           = f.label :primary_weapon, :class => 'inline left'
@@ -36,17 +66,12 @@
           = f.label :shield, :class => 'inline left'
         .small-9.columns
           = f.input :shield, :placeholder => '', label: false
-      .row
-        .small-3.columns
-          = f.label :description, :class => 'inline left'
-        .small-9.columns
-          = f.input :description, :placeholder => '', label: false, as: :text, :input_html => { :rows => 10 }
-      .row
-        .small-12.columns
-          %h4.subheader Faction
-          = f.simple_fields_for :faction_ships do |builder|
-            = render 'faction_ship_fields', :f => builder
-          = link_to_add_fields "<i class='fi-plus'> Add Faction</i>".html_safe, f, :faction_ships
+      /.row
+      /  .small-12.columns
+      /    %h4.subheader Faction
+      /    = f.simple_fields_for :faction_ships do |builder|
+      /      = render 'faction_ship_fields', :f => builder
+      /    = link_to_add_fields "<i class='fi-plus'> Add Faction</i>".html_safe, f, :faction_ships
 
       .row
         .small-12.columns

@@ -3,7 +3,7 @@
 one:
   pilot_name: MyString
   pilot_skill: 1
-  ship_type: MyString
+  ship: MyString
   faction: MyString
   primary_weapon_value: 1
   agility: 1
@@ -16,7 +16,7 @@ one:
 two:
   pilot_name: MyString
   pilot_skill: 1
-  ship_type: MyString
+  ship: MyString
   faction: MyString
   primary_weapon_value: 1
   agility: 1

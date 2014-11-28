@@ -1,0 +1,33 @@
+= form_for @upgrade do |f|
+  - if @upgrade.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@upgrade.errors.count, "error")} prohibited this upgrade from being saved:"
+      %ul
+        - @upgrade.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :ability
+    = f.text_area :ability
+  .field
+    = f.label :attack_value
+    = f.number_field :attack_value
+  .field
+    = f.label :weapon_range
+    = f.text_field :weapon_range
+  .field
+    = f.label :category
+    = f.text_field :category
+  .field
+    = f.label :cost
+    = f.number_field :cost
+  .row
+    .small-3.columns
+      = f.label :image_url, :class => 'inline left'
+    .small-9.columns
+      = f.input :image_url, :placeholder => 'External image URL', label: false
+  .actions
+    = f.submit 'Save'

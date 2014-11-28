@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  ability: MyText
+  attack_value: 1
+  weapon_range: MyString
+  category: MyString
+  cost: 1
+  slug: MyString
+
+two:
+  name: MyString
+  ability: MyText
+  attack_value: 1
+  weapon_range: MyString
+  category: MyString
+  cost: 1
+  slug: MyString

@@ -4,7 +4,7 @@
 .row
   .small-12.columns
     %h1
-      = "Edit ship: #{@ship.ship_type}"
+      = "Edit ship: #{@ship.ship} - #{@ship.pilot_name}"
 .row
   .small-12.columns
     = render :partial => 'form'
