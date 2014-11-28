@@ -6,21 +6,33 @@
     %h1
       = "#{@ship.ship} - #{@ship.pilot_name}"
       %small= @ship.faction.name
+.row
+  .small-12.medium-9.columns
 
-    %p
-      = @ship.description
-    %p
-      %b Primary weapon value:
-      = @ship.primary_weapon
-    %p
-      %b Agility:
-      = @ship.agility
-    %p
-      %b Hull:
-      = @ship.hull
-    %p
-      %b Shield:
-      = @ship.shield
+    = markdown(@ship.description)
+    = markdown(@ship.card_text)
+
+    %table.table.table-striped{style: "width:100%"}
+      %thead
+        %tr
+          %th Pilot Skill
+          %th Primary Weapon
+          %th Agility
+          %th Hull
+          %th Shield
+          %th Cost
+      %tbody
+        %tr
+          %td= @ship.pilot_skill
+          %td= @ship.primary_weapon
+          %td= @ship.agility
+          %td= @ship.hull
+          %td= @ship.shield
+          %td= @ship.cost
+
+  .small-12.medium-3.columns
+    - if @ship.image_url
+      %img{src: @ship.image_url}
 
 .row
   .small-12.columns
