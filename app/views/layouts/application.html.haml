@@ -20,13 +20,13 @@
               %ul.right
                 - if user_signed_in?
                   - if can? :manage, Squadron
-                      %li.has-dropdown{:class => ("active" if ['squadrons', 'new_squadron'].include?(@page))}
-                        %a{href: "#"} Squadrons
-                        %ul.dropdown
-                          %li{:class => ("active" if current_page('squadrons'))}
-                            #{link_to "My squadrons", squadrons_path()}
-                          %li{:class => ("active" if current_page('new_squadron'))}
-                            #{link_to "New squadron", new_squadron_path()}
+                    %li.has-dropdown{:class => ("active" if ['squadrons', 'new_squadron'].include?(@page))}
+                      %a{href: "#"} Squadrons
+                      %ul.dropdown
+                        %li{:class => ("active" if current_page('squadrons'))}
+                          #{link_to "My squadrons", user_squadrons_path(current_user)}
+                        %li{:class => ("active" if current_page('new_squadron'))}
+                          #{link_to "New squadron", new_user_squadron_path(current_user)}
                   %li.has-dropdown{:class => ("active" if current_page('user'))}
                     %a{href: "#"} Account
                     %ul.dropdown

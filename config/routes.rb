@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
   resources :upgrades
 
-  resources :pilots
-
   resources :factions
 
   resources :ships
@@ -10,6 +8,10 @@ Rails.application.routes.draw do
   resources :expansions
 
   devise_for :users
+
+  resources :users do
+    resources :squadrons
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

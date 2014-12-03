@@ -1,0 +1,36 @@
+- content_for :title do
+  Listing Squadrons
+
+.row
+  .small-12.columns
+    %h1
+      Listing Squadrons
+      - if can? :create, @squadron
+        %small
+          = link_to "<i class='fi-plus' title='New squadron'></i>".html_safe, new_user_squadron_path(current_user)
+
+.row
+  .small-12.columns
+    %table.responsive
+      %tr
+        %th Name
+        %th Description
+        %th Points
+        %th Wins
+        %th Draws
+        %th Losses
+        %th
+        %th
+        %th
+
+      - @squadrons.each do |squadron|
+        %tr
+          %td= squadron.name
+          %td= markdown(squadron.description)
+          %td= squadron.points
+          %td= squadron.wins
+          %td= squadron.draws
+          %td= squadron.losses
+          %td= link_to 'Show', user_squadron_path(current_user, squadron)
+          %td= link_to 'Edit', edit_user_squadron_path(current_user, squadron)
+          %td= link_to 'Destroy', user_squadron_path(current_user, squadron), :method => :delete, :data => { :confirm => 'Are you sure?' }

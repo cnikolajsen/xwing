@@ -1,0 +1,55 @@
+= simple_form_for [current_user, @squadron], html: { class: 'form-horizontal' } do |f|
+  - if @squadron.errors.any?
+    .alert-box.warning.radius{"data-alert" => ""}
+      %p
+        = pluralize(@squadron.errors.count, "error")
+        prohibited this squadron from being saved:
+      %ul
+        - @squadron.errors.full_messages.each do |msg|
+          %li= msg
+
+  .row
+    .medium-6.small-12.columns
+      .row
+        .small-3.columns
+          = f.label :name, :class => 'inline left'
+        .small-9.columns
+          = f.input :name, :placeholder => '', label: false
+      .row
+        .small-3.columns
+          = f.label :description, :class => 'inline left'
+        .small-9.columns
+          = f.input :description, :placeholder => '', label: false
+      .row
+        .small-3.columns
+          = f.label :faction_id, :class => 'inline left'
+        .small-9.columns
+          = f.input :faction_id, label: false, as: :select, collection: Faction.where(true)
+      .row
+        .small-3.columns
+          = f.label :points, :class => 'inline left'
+        .small-9.columns
+          = f.input :points, :placeholder => '', label: false, input_html: {value: f.object.points || '100'}
+      .row
+        .small-3.columns
+          = f.label :wins, :class => 'inline left'
+        .small-9.columns
+          = f.input :wins, :placeholder => '', label: false
+      .row
+        .small-3.columns
+          = f.label :losses, :class => 'inline left'
+        .small-9.columns
+          = f.input :losses, label: false
+      .row
+        .small-3.columns
+          = f.label :draws, :class => 'inline left'
+        .small-9.columns
+          = f.input :draws, :placeholder => '', label: false
+      .row
+        .small-12.columns
+          .form-actions
+            = f.submit nil, :class => 'button'
+            = link_to t('.cancel', :default => t("helpers.links.cancel")), user_squadrons_path(current_user), :class => 'button secondary'
+
+    .medium-6.small-12.columns
+      = find_and_preserve render :partial => 'layouts/markdown'

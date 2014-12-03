@@ -1,0 +1,39 @@
+- content_for :title do
+  = "#{@squadron.name}"
+
+.row
+  .small-12.columns
+    %h1
+      = "#{@squadron.name}"
+      %small= @squadron.faction.name
+.row
+  .small-12.medium-9.columns
+
+    = markdown(@squadron.description)
+
+    %p
+      %b Points:
+      = @squadron.points
+
+    = link_to 'Edit', edit_user_squadron_path(current_user, @squadron)
+    \|
+    = link_to 'Back', user_squadrons_path(current_user)
+
+
+  .small-12.medium-3.columns
+    .row
+      .small-4.columns
+        %strong Wins
+      .progress.small-8.columns.success.round
+        %span.meter{:style => "width:#{@squadron.win_percentage}%", title: @squadron.wins}
+    .row
+      .small-4.columns
+        %strong Draws
+      .progress.small-8.columns.secondary.round
+        %span.meter{:style => "width:#{@squadron.draw_percentage}%", title: @squadron.draws}
+    .row
+      .small-4.columns
+        %strong Losses
+      .progress.small-8.columns.alert.round
+        %span.meter{:style => "width:#{@squadron.loss_percentage}%", title: @squadron.losses}
+

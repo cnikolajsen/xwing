@@ -10,4 +10,6 @@ class User < ActiveRecord::Base
   validates :username, presence: true, uniqueness: true
 
   ROLES = %w(admin moderator player banned)
+
+  has_many :squadrons
 end
