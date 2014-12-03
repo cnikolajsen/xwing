@@ -1,27 +1,38 @@
-%p#notice= notice
+- content_for :title do
+  = "#{@upgrade.name} (Upgrade)"
 
-%p
-  %b Name:
-  = @upgrade.name
-%p
-  %b Ability:
-  = @upgrade.ability
-%p
-  %b Attack value:
-  = @upgrade.attack_value
-%p
-  %b Weapon range:
-  = @upgrade.weapon_range
-%p
-  %b Category:
-  = @upgrade.category
-%p
-  %b Cost:
-  = @upgrade.cost
-%p
-  %b Slug:
-  = @upgrade.slug
+.row
+  .small-12.columns
+    %h1
+      = "#{@upgrade.name}"
+      %small= @upgrade.category
+.row
+  .small-12.medium-9.columns
 
-= link_to 'Edit', edit_upgrade_path(@upgrade)
-\|
-= link_to 'Back', upgrades_path
+    = markdown(@upgrade.ability)
+
+    %table.table.table-striped{style: "width:100%"}
+      %thead
+        %tr
+          %th Attack Value
+          %th Weapon Range
+          %th Cost
+      %tbody
+        %tr
+          %td= @upgrade.attack_value
+          %td= @upgrade.weapon_range
+          %td= @upgrade.cost
+
+  .small-12.medium-3.columns
+    - if @upgrade.image_url
+      %img{src: @upgrade.image_url}
+
+.row
+  .small-12.columns
+    .button-bar
+      %ul.button-group.round
+        %li= link_to "<i class='fi-arrow-left'> Back</i>".html_safe, |
+            upgrades_path, :class => 'tiny secondary button'         |
+        - if can? :manage, @upgrade
+          %li= link_to "<i class='fi-pencil'> Edit</i>".html_safe, edit_upgrade_path(@upgrade), :class => 'tiny success button'
+          %li= link_to "<i class='fi-trash'> Destroy</i>".html_safe, @upgrade, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'tiny alert button'

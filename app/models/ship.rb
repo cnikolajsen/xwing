@@ -1,14 +1,20 @@
 class Ship < ActiveRecord::Base
   include FriendlyId
-  friendly_id :ship, :use => :slugged
+  friendly_id :slug_candidates, use: :slugged
 
   validates :ship, presence: true
   validates :faction_id, presence: true
   validates :pilot_name, presence: true, uniqueness: true
 
-  #has_many :faction_ships, dependent: :destroy
-  #has_many :factions, through: :faction_ships
   belongs_to :faction
 
-  #accepts_nested_attributes_for :faction_ships, reject_if: proc { |a| a['faction_id'].blank? }, allow_destroy: true
+  def slug_candidates
+    [
+      [:pilot_name, :ship]
+    ]
+  end
+
+  def ship_types
+    ['A-Wing', 'B-Wing', 'E-Wing', 'X-Wing', 'Y-Wing', 'Z-95 Headhunter', 'HWK-290', 'TIE Fighter', 'TIE Advanced', 'TIE Bomber', 'TIE Defender', 'TIE Intercepter', 'TIE Phantom', 'Lambda-Class Shuttle', 'VT-49 Decimator', 'Firespray-31', 'StarViper', 'M3-A "Scyk" Interceptor', 'Agressor']
+  end
 end

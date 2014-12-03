@@ -1,33 +1,55 @@
-= form_for @upgrade do |f|
+= simple_form_for @upgrade, html: { class: 'form-horizontal' } do |f|
   - if @upgrade.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@upgrade.errors.count, "error")} prohibited this upgrade from being saved:"
+    .alert-box.warning.radius{"data-alert" => ""}
+      %p
+        = pluralize(@upgrade.errors.count, "error")
+        prohibited this upgrade from being saved:
       %ul
         - @upgrade.errors.full_messages.each do |msg|
           %li= msg
 
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :ability
-    = f.text_area :ability
-  .field
-    = f.label :attack_value
-    = f.number_field :attack_value
-  .field
-    = f.label :weapon_range
-    = f.text_field :weapon_range
-  .field
-    = f.label :category
-    = f.text_field :category
-  .field
-    = f.label :cost
-    = f.number_field :cost
   .row
-    .small-3.columns
-      = f.label :image_url, :class => 'inline left'
-    .small-9.columns
-      = f.input :image_url, :placeholder => 'External image URL', label: false
-  .actions
-    = f.submit 'Save'
+    .medium-6.small-12.columns
+      .row
+        .small-3.columns
+          = f.label :name, :class => 'inline left'
+        .small-9.columns
+          = f.input :name, :placeholder => '', label: false
+      .row
+        .small-3.columns
+          = f.label :ability, :class => 'inline left'
+        .small-9.columns
+          = f.input :ability, :placeholder => '', label: false
+      .row
+        .small-3.columns
+          = f.label :attack_value, :class => 'inline left'
+        .small-9.columns
+          = f.input :attack_value, :placeholder => '', label: false
+      .row
+        .small-3.columns
+          = f.label :weapon_range, :class => 'inline left'
+        .small-9.columns
+          = f.input :weapon_range, :placeholder => '', label: false
+      .row
+        .small-3.columns
+          = f.label :category, :class => 'inline left'
+        .small-9.columns
+          = f.input :category, label: false, as: :select, collection: @upgrade.upgrade_types
+      .row
+        .small-3.columns
+          = f.label :cost, :class => 'inline left'
+        .small-9.columns
+          = f.input :cost, :placeholder => '', label: false
+      /.row
+      /  .small-3.columns
+      /    = f.label :image_url, :class => 'inline left'
+      /  .small-9.columns
+      /    = f.input :image_url, :placeholder => 'External image URL', label: false
+      .row
+        .small-12.columns
+          .form-actions
+            = f.submit nil, :class => 'button'
+            = link_to t('.cancel', :default => t("helpers.links.cancel")), ships_path, :class => 'button secondary'
+
+    .medium-6.small-12.columns
+      = find_and_preserve render :partial => 'layouts/markdown'

@@ -38,7 +38,7 @@ class UpgradesController < ApplicationController
 
   private
     def set_upgrade
-      @upgrade = Upgrade.find(params[:id])
+      @upgrade = Upgrade.friendly.find(params[:id])
     end
 
     def upgrade_params

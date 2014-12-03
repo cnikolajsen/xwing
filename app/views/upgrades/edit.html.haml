@@ -1,7 +1,10 @@
-%h1 Editing upgrade
+- content_for :title do
+  Editing upgrade
 
-= render 'form'
-
-= link_to 'Show', @upgrade
-\|
-= link_to 'Back', upgrades_path
+.row
+  .small-12.columns
+    %h1
+      = "Editing upgrade: #{@upgrade.name}"
+.row
+  .small-12.columns
+    = render :partial => 'form'

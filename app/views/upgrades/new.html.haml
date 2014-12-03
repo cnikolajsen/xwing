@@ -1,5 +1,10 @@
-%h1 New upgrade
+- content_for :title do
+  New upgrade
 
-= render 'form'
-
-= link_to 'Back', upgrades_path
+.row
+  .small-12.columns
+    %h1
+      New upgrade
+.row
+  .small-12.columns
+    = render :partial => 'form'

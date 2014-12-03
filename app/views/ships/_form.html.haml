@@ -1,5 +1,4 @@
 = simple_form_for @ship, html: { class: 'form-horizontal' } do |f|
-  = hidden_field_tag 'character_basics', 'true'
   - if @ship.errors.any?
     .alert-box.warning.radius{"data-alert" => ""}
       %p
@@ -18,9 +17,9 @@
           = f.input :pilot_name, :placeholder => 'Pilot name', label: false
       .row
         .small-3.columns
-          = f.label :ship, :class => 'inline left'
+          = f.label :ship, 'Ship Type', :class => 'inline left'
         .small-9.columns
-          = f.input :ship, :placeholder => 'Ship type', label: false
+          = f.input :ship, :placeholder => 'Ship type', label: false, as: :select, collection: @ship.ship_types
       .row
         .small-3.columns
           = f.label :faction_id, :class => 'inline left'

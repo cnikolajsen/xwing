@@ -1,31 +1,36 @@
-%h1 Listing upgrades
+- content_for :title do
+  Listing upgrades
 
-%table
-  %tr
-    %th Name
-    %th Ability
-    %th Attack value
-    %th Weapon range
-    %th Category
-    %th Cost
-    %th Slug
-    %th
-    %th
-    %th
+.row
+  .small-12.columns
+    %h1
+      Listing upgrades
+      - if can? :create, @upgrade
+        %small
+          = link_to "<i class='fi-plus' title='New upgrade'></i>".html_safe, new_upgrade_path
 
-  - @upgrades.each do |upgrade|
-    %tr
-      %td= upgrade.name
-      %td= upgrade.ability
-      %td= upgrade.attack_value
-      %td= upgrade.weapon_range
-      %td= upgrade.category
-      %td= upgrade.cost
-      %td= upgrade.slug
-      %td= link_to 'Show', upgrade
-      %td= link_to 'Edit', edit_upgrade_path(upgrade)
-      %td= link_to 'Destroy', upgrade, :method => :delete, :data => { :confirm => 'Are you sure?' }
+.row
+  .small-12.columns
+    %table.responsive
+      %tr
+        %th Name
+        %th Ability
+        %th Attack value
+        %th Weapon range
+        %th Category
+        %th Cost
+        %th
+        %th
+        %th
 
-%br
-
-= link_to 'New Upgrade', new_upgrade_path
+      - @upgrades.each do |upgrade|
+        %tr
+          %td= upgrade.name
+          %td= markdown(upgrade.ability)
+          %td= upgrade.attack_value
+          %td= upgrade.weapon_range
+          %td= upgrade.category
+          %td= upgrade.cost
+          %td= link_to 'Show', upgrade
+          %td= link_to 'Edit', edit_upgrade_path(upgrade)
+          %td= link_to 'Destroy', upgrade, :method => :delete, :data => { :confirm => 'Are you sure?' }
