@@ -1,3 +1,36 @@
 // Place all the styles related to the squadrons controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+h1.galactic_empire {
+  background: url('../assets/imperial.svg') 0 50% no-repeat;
+  background-size: 0.8em;
+  padding-left: 1em;
+}
+h1.rebel_alliance {
+  background: url('../assets/rebel.svg') 0 50% no-repeat;
+  background-size: 0.8em;
+  padding-left: 1em;
+}
+
+
+.squadron-ship-selection {
+  ul {
+    margin-left: 0;
+  }
+
+  li {
+    list-style: none;
+    height: 17px;
+    padding-left: 1.5em;
+  }
+  li.rebel_alliance {
+    background: url('../assets/icons.png') 0 -4792px no-repeat;
+  }
+  li.galactic_empire {
+    background: url('../assets/icons.png') 0 -4764px no-repeat;
+  }
+  li.scum {
+    background: url('../assets/icons.png') 0 -710px no-repeat;
+  }
+}

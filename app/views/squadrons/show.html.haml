@@ -3,11 +3,11 @@
 
 .row
   .small-12.columns
-    %h1
+    %h1{:class => @squadron.faction.name.parameterize.underscore}
       = "#{@squadron.name}"
       %small= @squadron.faction.name
 .row
-  .small-12.medium-9.columns
+  .small-12.medium-8.columns
 
     = markdown(@squadron.description)
 
@@ -20,20 +20,36 @@
     = link_to 'Back', user_squadrons_path(current_user)
 
 
-  .small-12.medium-3.columns
+  .small-12.medium-4.columns
     .row
-      .small-4.columns
-        %strong Wins
-      .progress.small-8.columns.success.round
-        %span.meter{:style => "width:#{@squadron.win_percentage}%", title: @squadron.wins}
+      .small-12.columns
+        .panel
+          .row
+            .small-4.columns
+              %strong Wins
+            .progress.small-8.columns.success.round
+              %span.meter{:style => "width:#{@squadron.win_percentage}%", title: @squadron.wins}
+          .row
+            .small-4.columns
+              %strong Draws
+            .progress.small-8.columns.secondary.round
+              %span.meter{:style => "width:#{@squadron.draw_percentage}%", title: @squadron.draws}
+          .row
+            .small-4.columns
+              %strong Losses
+            .progress.small-8.columns.alert.round
+              %span.meter{:style => "width:#{@squadron.loss_percentage}%", title: @squadron.losses}
     .row
-      .small-4.columns
-        %strong Draws
-      .progress.small-8.columns.secondary.round
-        %span.meter{:style => "width:#{@squadron.draw_percentage}%", title: @squadron.draws}
-    .row
-      .small-4.columns
-        %strong Losses
-      .progress.small-8.columns.alert.round
-        %span.meter{:style => "width:#{@squadron.loss_percentage}%", title: @squadron.losses}
-
+      .small-12.columns.squadron-ship-selection
+        %h4 Available Pilots
+        %dl.accordion{"data-accordion" => ""}
+          - @available_ships.each_with_index do |ship, i|
+            - if ship[:ships].any?
+              %dd.accordion-navigation
+                %a{href: "#panel#{i}"}
+                  %strong= ship[:type]
+                .content{:id => "panel#{i}", :class => ('active' if i == 0)}
+                  %ul
+                    - ship[:ships].each do |ship|
+                      %li{:class => ship.faction.name.parameterize.underscore}
+                        = "#{ship.pilot_name} (#{ship.cost})"

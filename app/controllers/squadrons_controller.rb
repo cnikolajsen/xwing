@@ -1,4 +1,5 @@
 class SquadronsController < ApplicationController
+  include ShipsHelper
   before_action :set_squadron, only: [:show, :edit, :update, :destroy]
 
   respond_to :html
@@ -9,6 +10,28 @@ class SquadronsController < ApplicationController
   end
 
   def show
+    @faction_ships = Ship.where(:faction_id => @squadron.faction_id)
+
+    @available_ships = []
+    ship_types.each do |type|
+      type_ships = Array.new
+      Ship.where(:ship => type, :faction_id => @squadron.faction_id).each do |ship|
+        type_ships << ship
+      end
+      @available_ships << {
+        :type => type,
+        :ships => type_ships
+      }
+    end
+    #@faction_ships.each do |ship|
+    #  @available_ships[:ship] = ship.ship
+    #end
+    #@duties.merge!('Universal' => Duty.where('career_id IS NULL').order(:name).map { |duty| [duty.id, duty.name, duty.description] })
+
+    #Career.where(:true).each do |career|
+    #  @duties.merge!(career.name => Duty.where('career_id = ?', career.id).order(:name).map { |duty| [duty.id, duty.name, duty.description] })
+    #end
+
     respond_with(@squadron)
   end
 

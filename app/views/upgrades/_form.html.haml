@@ -34,7 +34,7 @@
         .small-3.columns
           = f.label :category, :class => 'inline left'
         .small-9.columns
-          = f.input :category, label: false, as: :select, collection: @upgrade.upgrade_types
+          = f.input :category, label: false, as: :select, collection: upgrade_types
       .row
         .small-3.columns
           = f.label :cost, :class => 'inline left'

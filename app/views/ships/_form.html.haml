@@ -19,7 +19,7 @@
         .small-3.columns
           = f.label :ship, 'Ship Type', :class => 'inline left'
         .small-9.columns
-          = f.input :ship, :placeholder => 'Ship type', label: false, as: :select, collection: @ship.ship_types
+          = f.input :ship, :placeholder => 'Ship type', label: false, as: :select, collection: ship_types
       .row
         .small-3.columns
           = f.label :faction_id, :class => 'inline left'
